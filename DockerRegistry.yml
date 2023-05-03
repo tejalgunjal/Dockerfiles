@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: nginxpod
+spec:
+  imagePullSecrets:
+    - name: mydockerhubsecret
+
+  containers:
+    - image: batty1327/nginx
+      name: nginxcontainer
+      ports:
+        - containerPort: 80
