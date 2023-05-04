@@ -1,0 +1,31 @@
+#!/bin/bash
+create database joker;
+use joker;
+create table posts( id int,status varchar(200), posturl varchar(200));
+insert into posts(id,status,posturl)values (1,"come to goa","https://insta.com/ra.jpg");
+
+
+12)compose-backend
+
+services:
+   db:
+     image: mysql
+     environment:
+        MYSQL_ROOT_PASSWORD: test@xxx
+        MYSQL_DATABASE: wordpressdb
+     ports:
+      - 3306:3306
+
+ 
+
+   wordpress:
+        image: wordpress
+        ports:
+         - 80:80
+        depends_on:
+         - db
+        environment:
+           WORDPRESS_DB_HOST: db
+           WORDPRESS_DB_USER: root
+           WORDPRESS_DB_PASSWORD: Pass@xxx
+           WORDPRESS_DB_NAME: wordpressdb
